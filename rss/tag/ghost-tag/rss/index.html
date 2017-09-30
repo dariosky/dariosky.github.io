@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[ghost - Dario Varotto]]></title><description><![CDATA[Dreaming electric sheep]]></description><link>http://localhost:2368/</link><image><url>http://localhost:2368/favicon.png</url><title>ghost - Dario Varotto</title><link>http://localhost:2368/</link></image><generator>Ghost 1.10</generator><lastBuildDate>Sat, 30 Sep 2017 09:48:47 GMT</lastBuildDate><atom:link href="http://localhost:2368/tag/ghost-tag/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Getting started with Ghost]]></title><description><![CDATA[<div class="kg-card-markdown"><p>Today I was playing with <a href="https://ghost.org/">Ghost</a> an opensource platform for blogging that recently reached version 1.0.</p>
+<p>Ghost has a clean design, a great care for details and looks like a nice platform to use. Plus it's opensource and well supported!</p>
+<p>Here are some notes to get started:</p>
+<h2 id="initialnodesetup">Initial NODE</h2></div>]]></description><link>http://localhost:2368/2017/09/10/getting-started-with-ghost/</link><guid isPermaLink="false">59b45b7921f33f09025074ec</guid><category><![CDATA[ghost]]></category><category><![CDATA[blog]]></category><category><![CDATA[github]]></category><dc:creator><![CDATA[Dario Varotto]]></dc:creator><pubDate>Sat, 09 Sep 2017 22:28:38 GMT</pubDate><media:content url="http://localhost:2368/content/images/2017/09/FreeVector-Ghost-Vector.jpg" medium="image"/><content:encoded><![CDATA[<div class="kg-card-markdown"><img src="http://localhost:2368/content/images/2017/09/FreeVector-Ghost-Vector.jpg" alt="Getting started with Ghost"><p>Today I was playing with <a href="https://ghost.org/">Ghost</a> an opensource platform for blogging that recently reached version 1.0.</p>
+<p>Ghost has a clean design, a great care for details and looks like a nice platform to use. Plus it's opensource and well supported!</p>
+<p>Here are some notes to get started:</p>
+<h2 id="initialnodesetup">Initial NODE Setup</h2>
+<p>If you need it, for being able to install npm packages globally without root permissions. Create <code>~/.npmrc</code> file and write in it:</p>
+<pre><code>prefix = ~/.npm
+</code></pre>
+<p>put this at the end of your <code>~/.profile</code>:</p>
+<pre><code>export PATH=&quot;~/.npm/bin:$PATH&quot;
+</code></pre>
+<h2 id="install">Install</h2>
+<p>There are various ways of install locally (I was following <a href="https://github.com/paladini/ghost-on-github-pages">this guide</a>) but the suggested one is via the <strong>ghost-cli</strong></p>
+<ol>
+<li>
+<p>Install the ghost-cli package</p>
+<pre><code> yarn global add ghost-cli@latest
+</code></pre>
+</li>
+<li>
+<p>create a new folder to keep your new Ghost-blog</p>
+</li>
+<li>
+<p>install/start ghost with</p>
+<pre><code> yarn install local
+</code></pre>
+</li>
+<li>
+<p>configure your owner account locally: <a href="http://localhost:2368/ghost/">http://localhost:2368/ghost/</a></p>
+</li>
+<li>
+<p>setup your blog ... until you're ready to publish</p>
+</li>
+</ol>
+<h2 id="deploy">Deploy</h2>
+<p>For hosting Ghost you can go with the self-hosting option (it uses Node, and 1GB of RAM minimum is suggested), you can buy the hosting from the foundation and help founding the project, but I wanted to try to host it in the GitHub pages (that I started loving recently).</p>
+<p>Here is how:</p>
+<h3 id="installpythonrequirements">Install Python requirements</h3>
+<p>To create the static dump of the site for GitHub, we need some Python tool:</p>
+<p>From the Ghost folder I used pyenv to setup a default virtual-environment named ghost (<a href="https://pypi.python.org/pypi/buster/">buster</a> needs Python 2.7):</p>
+<pre><code>pyenv virtualenv 2.7.13 ghost
+pyenv local ghost
+pip install buster
+</code></pre>
+<p>We create a github repository named <code>username.github.io</code> that will host the static site.<br>
+Buster will take the site and freeze it in a <code>static</code> folder.</p>
+<pre><code>buster setup
+</code></pre>
+<p>Choose <a href="http://username.github.io">username.github.io</a>, with your username when promptedm and then</p>
+<pre><code>buster generate
+</code></pre>
+<p>We can now push to GitHub:</p>
+<pre><code>cd static
+git add -A
+git commit -m &quot;Website update at $(date)&quot;
+git push origin master
+</code></pre>
+<p>And that's it your blog should be updated</p>
+</div>]]></content:encoded></item></channel></rss>
