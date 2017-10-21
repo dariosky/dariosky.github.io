@@ -1,4 +1,39 @@
-﻿<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Dario Varotto]]></title><description><![CDATA[Dreaming electric sheep]]></description><link>https://dariosky.github.io/</link><image><url>https://dariosky.github.io/favicon.png</url><title>Dario Varotto</title><link>https://dariosky.github.io/</link></image><generator>Ghost 1.10</generator><lastBuildDate>Sat, 30 Sep 2017 09:48:46 GMT</lastBuildDate><atom:link href="https://dariosky.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Getting started with Ghost]]></title><description><![CDATA[<div class="kg-card-markdown"><p>Today I was playing with <a href="https://ghost.org/">Ghost</a> an opensource platform for blogging that recently reached version 1.0.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Dario Varotto]]></title><description><![CDATA[Dreaming electric sheep]]></description><link>https://dariosky.github.io/</link><image><url>https://dariosky.github.io/favicon.png</url><title>Dario Varotto</title><link>https://dariosky.github.io/</link></image><generator>Ghost 1.15</generator><lastBuildDate>Sat, 21 Oct 2017 09:28:53 GMT</lastBuildDate><atom:link href="https://dariosky.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[React - host in GitHub]]></title><description><![CDATA[<div class="kg-card-markdown"><p>In these months I'm playing with React, Redux and ES6.<br>
+I fell in love with the Meteor ecosystem some year ago, and one of the things I appreciated a lot, was the ability to easily deploy the project online.</p>
+<p>I was happy to find a way to deploy the project</p></div>]]></description><link>https://dariosky.github.io/2017/10/21/react-host-in-github/</link><guid isPermaLink="false">59eb0ab721cf8a39f983b9ba</guid><category><![CDATA[github]]></category><category><![CDATA[react]]></category><category><![CDATA[deploy]]></category><dc:creator><![CDATA[Dario Varotto]]></dc:creator><pubDate>Sat, 21 Oct 2017 09:08:01 GMT</pubDate><media:content url="https://dariosky.github.io/content/images/2017/10/react-github.png" medium="image"/><content:encoded><![CDATA[<div class="kg-card-markdown"><img src="https://dariosky.github.io/content/images/2017/10/react-github.png" alt="React - host in GitHub"><p>In these months I'm playing with React, Redux and ES6.<br>
+I fell in love with the Meteor ecosystem some year ago, and one of the things I appreciated a lot, was the ability to easily deploy the project online.</p>
+<p>I was happy to find a way to deploy the project in a similar way with React application created with <code>create-react-app</code>.</p>
+<p>Here's how:</p>
+<ol>
+<li>
+<p>Add an <code>homepage</code> field in your <code>package.json</code></p>
+<pre><code> &quot;homepage&quot;: &quot;https://myusername.github.io/my-app&quot;
+</code></pre>
+</li>
+<li>
+<p>Install gh-pages</p>
+<pre><code>yarn add gh-page
+</code></pre>
+</li>
+<li>
+<p>Add the <code>deploy</code> to your command, in <code>package.json</code></p>
+<pre><code>  &quot;scripts&quot;: {
+     &quot;predeploy&quot;: &quot;npm run build&quot;,
+     &quot;deploy&quot;: &quot;gh-pages -d build&quot;,
+     ...
+</code></pre>
+</li>
+<li>
+<p>Deploy:</p>
+<pre><code> yarn deploy
+</code></pre>
+</li>
+</ol>
+<p>PS. Be sure to have the GitHub Pages are enabled in your<br>
+GitHub settings</p>
+<p>References:<br>
+<a href="https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages">create-react-app in GitHub</a></p>
+</div>]]></content:encoded></item><item><title><![CDATA[Getting started with Ghost]]></title><description><![CDATA[<div class="kg-card-markdown"><p>Today I was playing with <a href="https://ghost.org/">Ghost</a> an opensource platform for blogging that recently reached version 1.0.</p>
 <p>Ghost has a clean design, a great care for details and looks like a nice platform to use. Plus it's opensource and well supported!</p>
 <p>Here are some notes to get started:</p>
 <h2 id="initialnodesetup">Initial NODE</h2></div>]]></description><link>https://dariosky.github.io/2017/09/10/getting-started-with-ghost/</link><guid isPermaLink="false">59b45b7921f33f09025074ec</guid><category><![CDATA[ghost]]></category><category><![CDATA[blog]]></category><category><![CDATA[github]]></category><dc:creator><![CDATA[Dario Varotto]]></dc:creator><pubDate>Sat, 09 Sep 2017 22:28:38 GMT</pubDate><media:content url="https://dariosky.github.io/content/images/2017/09/FreeVector-Ghost-Vector.jpg" medium="image"/><content:encoded><![CDATA[<div class="kg-card-markdown"><img src="https://dariosky.github.io/content/images/2017/09/FreeVector-Ghost-Vector.jpg" alt="Getting started with Ghost"><p>Today I was playing with <a href="https://ghost.org/">Ghost</a> an opensource platform for blogging that recently reached version 1.0.</p>
