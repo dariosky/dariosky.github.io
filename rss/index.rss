@@ -1,7 +1,42 @@
 <!DOCTYPE html>
-<html><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Dario Varotto</title><description>Dreaming electric sheep</description><link>https://dariosky.github.io/</link><image><url>https://dariosky.github.io/favicon.png</url><title>Dario Varotto</title><link>https://dariosky.github.io/</link></image><generator>Ghost 1.15</generator><lastBuildDate>Sat, 21 Oct 2017 09:28:53 GMT</lastBuildDate><atom:link href="https://dariosky.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>React - host in GitHub</title><description>&lt;div class="kg-card-markdown"&gt;&lt;p&gt;In these months I'm playing with React, Redux and ES6.&lt;br&gt;
-I fell in love with the Meteor ecosystem some year ago, and one of the things I appreciated a lot, was the ability to easily deploy the project online.&lt;/p&gt;
-&lt;p&gt;I was happy to find a way to deploy the project&lt;/p&gt;&lt;/div&gt;</description><link>https://dariosky.github.io/2017/10/21/react-host-in-github/</link><guid isPermaLink="false">59eb0ab721cf8a39f983b9ba</guid><category>github</category><category>react</category><category>deploy</category><dc:creator>Dario Varotto</dc:creator><pubDate>Sat, 21 Oct 2017 09:08:01 GMT</pubDate><media:content url="https://dariosky.github.io/content/images/2017/10/react-github.png" medium="image"/><content:encoded>&lt;div class="kg-card-markdown"&gt;&lt;img src="https://dariosky.github.io/content/images/2017/10/react-github.png" alt="React - host in GitHub"&gt;&lt;p&gt;In these months I'm playing with React, Redux and ES6.&lt;br&gt;
+<html><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Dario Varotto</title><description>Dreaming electric sheep</description><link>https://dariosky.github.io/</link><image><url>https://dariosky.github.io/favicon.png</url><title>Dario Varotto</title><link>https://dariosky.github.io/</link></image><generator>Ghost 1.21</generator><lastBuildDate>Thu, 01 Mar 2018 00:26:56 GMT</lastBuildDate><atom:link href="https://dariosky.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Signing GitHub commits</title><description>A quick guide to help you quickly setup signed commits for git and github</description><link>https://dariosky.github.io/2018/03/01/signing-github-commits/</link><guid isPermaLink="false">5a9742b59b24bd55676702f9</guid><category>github</category><dc:creator>Dario Varotto</dc:creator><pubDate>Thu, 01 Mar 2018 00:17:23 GMT</pubDate><media:content url="https://dariosky.github.io/content/images/2018/03/Perfect-App-Lock-Pro-3.png" medium="image"/><content:encoded>&lt;div class="kg-card-markdown"&gt;&lt;img src="https://dariosky.github.io/content/images/2018/03/Perfect-App-Lock-Pro-3.png" alt="Signing GitHub commits"&gt;&lt;p&gt;A short reference to guide you to &lt;a href="https://help.github.com/articles/signing-commits-with-gpg/"&gt;sign your commits in GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Before starting is important that you check what email you're using for commits.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config --global --list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Will give you the &lt;code&gt;user.email&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id="createagpgkey"&gt;Create a gpg key&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;gpg --full-gen-key
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When asked chose the default RSA, maximum length of 4096 and not expiring keys.&lt;br&gt;
+In the key data, chose the same email from the previous point.&lt;/p&gt;
+&lt;h2 id="exporttheexistingkeys"&gt;Export the existing keys&lt;/h2&gt;
+&lt;p&gt;This is not required but it's interesting to be able to export the public and private keys just created.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gpg -a --export your@emai.com &amp;gt; your-backup.pub.gpg
+gpg -a --export-secret-keys your@emai.com &amp;gt; your-backup.sec.gpg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="tellgitaboutyourkeysanduseit"&gt;Tell git about your keys, and use it&lt;/h2&gt;
+&lt;p&gt;Get the ID of your new gpg key via:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gpg -K
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Tell Git to use it, and to sign your commits&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git config --global user.signingkey XXXXXXX
+git config --global commit.gpgsign true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This &lt;a href="https://intellij-support.jetbrains.com/hc/en-us/community/posts/206502489-Git-GPG-commit-signing-commit-s-from-IDE-in-effective-way"&gt;works for PyCharm/IntelliJ&lt;/a&gt; too!&lt;/p&gt;
+&lt;p&gt;Edit (or create) &lt;code&gt;~/.gnupg/pgp.conf&lt;/code&gt; adding:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;no-tty
+use-agent
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="tellgithubofyourkeys"&gt;Tell GitHub of your keys&lt;/h2&gt;
+&lt;p&gt;Finally tell GitHub of your new key (be sure also to add and validate your email).&lt;br&gt;
+Go on your &lt;a href="https://github.com/settings/keys"&gt;keys-page in your GitHub profile&lt;/a&gt;&lt;br&gt;
+and add as &amp;quot;New GPG key&amp;quot; the public armor code of your key:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gpg --export --armor your@email.com
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;--&lt;/p&gt;
+&lt;p&gt;That's it, when you'll commit next time, the GPG pass-phrase will be prompted, your commit will be signed and GitHub will show it as &amp;quot;verified&amp;quot;.&lt;br&gt;
+Cool!&lt;/p&gt;
+&lt;/div&gt;</content:encoded></item><item><title>React - host in GitHub</title><description>How to deploy your create-react-apps in GitHub Pages in few easy steps.</description><link>https://dariosky.github.io/2017/10/21/react-host-in-github/</link><guid isPermaLink="false">59eb0ab721cf8a39f983b9ba</guid><category>github</category><category>react</category><category>deploy</category><dc:creator>Dario Varotto</dc:creator><pubDate>Sat, 21 Oct 2017 09:08:01 GMT</pubDate><media:content url="https://dariosky.github.io/content/images/2017/10/react-github.png" medium="image"/><content:encoded>&lt;div class="kg-card-markdown"&gt;&lt;img src="https://dariosky.github.io/content/images/2017/10/react-github.png" alt="React - host in GitHub"&gt;&lt;p&gt;In these months I'm playing with React, Redux and ES6.&lt;br&gt;
 I fell in love with the Meteor ecosystem some year ago, and one of the things I appreciated a lot, was the ability to easily deploy the project online.&lt;/p&gt;
 &lt;p&gt;I was happy to find a way to deploy the project in a similar way with React application created with &lt;code&gt;create-react-app&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Here's how:&lt;/p&gt;
