@@ -1,5 +1,43 @@
 <!DOCTYPE html>
-<html><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Dario Varotto</title><description>Dreaming electric sheep</description><link>https://dariosky.github.io/</link><image><url>https://dariosky.github.io/favicon.png</url><title>Dario Varotto</title><link>https://dariosky.github.io/</link></image><generator>Ghost 1.21</generator><lastBuildDate>Thu, 01 Mar 2018 00:26:56 GMT</lastBuildDate><atom:link href="https://dariosky.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Signing GitHub commits</title><description>A quick guide to help you quickly setup signed commits for git and github</description><link>https://dariosky.github.io/2018/03/01/signing-github-commits/</link><guid isPermaLink="false">5a9742b59b24bd55676702f9</guid><category>github</category><dc:creator>Dario Varotto</dc:creator><pubDate>Thu, 01 Mar 2018 00:17:23 GMT</pubDate><media:content url="https://dariosky.github.io/content/images/2018/03/Perfect-App-Lock-Pro-3.png" medium="image"/><content:encoded>&lt;div class="kg-card-markdown"&gt;&lt;img src="https://dariosky.github.io/content/images/2018/03/Perfect-App-Lock-Pro-3.png" alt="Signing GitHub commits"&gt;&lt;p&gt;A short reference to guide you to &lt;a href="https://help.github.com/articles/signing-commits-with-gpg/"&gt;sign your commits in GitHub&lt;/a&gt;.&lt;/p&gt;
+<html><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Dario Varotto</title><description>Dreaming electric sheep</description><link>https://dariosky.github.io/</link><image><url>https://dariosky.github.io/favicon.png</url><title>Dario Varotto</title><link>https://dariosky.github.io/</link></image><generator>Ghost 1.21</generator><lastBuildDate>Sun, 05 Aug 2018 17:06:04 GMT</lastBuildDate><atom:link href="https://dariosky.github.io/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Add proper hot-reload to create-react-app</title><description>&lt;div class="kg-card-markdown"&gt;&lt;p&gt;When you change something in a create-react-app your app will kindly reload, that's great, but it will do it reloading the page, losing the current state.&lt;/p&gt;
+&lt;p&gt;&amp;quot;Proper&amp;quot; hot-reload instead will reload the single changed component, keeping it's state... it's a wonderful developer experience.&lt;br&gt;
+In CRA the webpack configuration&lt;/p&gt;&lt;/div&gt;</description><link>https://dariosky.github.io/2018/08/05/add-proper-hot-reload-to-create-react-app/</link><guid isPermaLink="false">5b6724d32126707ecf8846ab</guid><category>react</category><dc:creator>Dario Varotto</dc:creator><pubDate>Sun, 05 Aug 2018 17:02:30 GMT</pubDate><media:content url="https://dariosky.github.io/content/images/2018/08/hot.jpg" medium="image"/><content:encoded>&lt;div class="kg-card-markdown"&gt;&lt;img src="https://dariosky.github.io/content/images/2018/08/hot.jpg" alt="Add proper hot-reload to create-react-app"&gt;&lt;p&gt;When you change something in a create-react-app your app will kindly reload, that's great, but it will do it reloading the page, losing the current state.&lt;/p&gt;
+&lt;p&gt;&amp;quot;Proper&amp;quot; hot-reload instead will reload the single changed component, keeping it's state... it's a wonderful developer experience.&lt;br&gt;
+In CRA the webpack configuration is normally unreachable, so we'll use some great package (&lt;a href="https://github.com/timarney/react-app-rewired"&gt;react-app-rewired&lt;/a&gt; and &lt;a href="https://github.com/cdharris/react-app-rewire-hot-loader"&gt;react-app-rewire-hot-loader&lt;/a&gt;) to allow our changes, here's a quick step-by-step guide on how to do it without going into much details:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;yarn add -D react-app-rewired react-hot-loader react-app-rewire-hot-loader&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a &lt;code&gt;config-overrides.js&lt;/code&gt; file on your project root with this content:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;const rewireReactHotLoader = require('react-app-rewire-hot-loader')
+
+/* config-overrides.js */
+module.exports = function override(config, env) {
+  config = rewireReactHotLoader(config, env)
+  return config
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Change your &lt;code&gt;react-scripts&lt;/code&gt; to &lt;code&gt;react-app-rewired&lt;/code&gt; in your &lt;code&gt;package.json&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;start&amp;quot;: &amp;quot;react-app-rewired start&amp;quot;,
+&amp;quot;build&amp;quot;: &amp;quot;react-app-rewired build&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Wrap your app in the hot HOC:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// Hot-loader
+import {hot} from 'react-hot-loader'
+
+...
+export default hot(module)(App)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That's it!&lt;br&gt;
+Rerun your dev-server with &lt;code&gt;yarn start&lt;/code&gt; and your proper hot reload should be working.&lt;/p&gt;
+&lt;/div&gt;</content:encoded></item><item><title>Signing GitHub commits</title><description>A quick guide to help you quickly setup signed commits for git and github</description><link>https://dariosky.github.io/2018/03/01/signing-github-commits/</link><guid isPermaLink="false">5a9742b59b24bd55676702f9</guid><category>github</category><dc:creator>Dario Varotto</dc:creator><pubDate>Thu, 01 Mar 2018 00:17:23 GMT</pubDate><media:content url="https://dariosky.github.io/content/images/2018/03/Perfect-App-Lock-Pro-3.png" medium="image"/><content:encoded>&lt;div class="kg-card-markdown"&gt;&lt;img src="https://dariosky.github.io/content/images/2018/03/Perfect-App-Lock-Pro-3.png" alt="Signing GitHub commits"&gt;&lt;p&gt;A short reference to guide you to &lt;a href="https://help.github.com/articles/signing-commits-with-gpg/"&gt;sign your commits in GitHub&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Before starting is important that you check what email you're using for commits.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;git config --global --list
 &lt;/code&gt;&lt;/pre&gt;

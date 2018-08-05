@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>react - Dario Varotto</title><description>Dreaming electric sheep</description><link>https://dariosky.github.io/</link><image><url>https://dariosky.github.io/favicon.png</url><title>react - Dario Varotto</title><link>https://dariosky.github.io/</link></image><generator>Ghost 1.21</generator><lastBuildDate>Sun, 05 Aug 2018 17:06:06 GMT</lastBuildDate><atom:link href="https://dariosky.github.io/tag/react/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Add proper hot-reload to create-react-app</title><description>&lt;div class="kg-card-markdown"&gt;&lt;p&gt;When you change something in a create-react-app your app will kindly reload, that's great, but it will do it reloading the page, losing the current state.&lt;/p&gt;
+&lt;p&gt;&amp;quot;Proper&amp;quot; hot-reload instead will reload the single changed component, keeping it's state... it's a wonderful developer experience.&lt;br&gt;
+In CRA the webpack configuration&lt;/p&gt;&lt;/div&gt;</description><link>https://dariosky.github.io/2018/08/05/add-proper-hot-reload-to-create-react-app/</link><guid isPermaLink="false">5b6724d32126707ecf8846ab</guid><category>react</category><dc:creator>Dario Varotto</dc:creator><pubDate>Sun, 05 Aug 2018 17:02:30 GMT</pubDate><media:content url="https://dariosky.github.io/content/images/2018/08/hot.jpg" medium="image"/><content:encoded>&lt;div class="kg-card-markdown"&gt;&lt;img src="https://dariosky.github.io/content/images/2018/08/hot.jpg" alt="Add proper hot-reload to create-react-app"&gt;&lt;p&gt;When you change something in a create-react-app your app will kindly reload, that's great, but it will do it reloading the page, losing the current state.&lt;/p&gt;
+&lt;p&gt;&amp;quot;Proper&amp;quot; hot-reload instead will reload the single changed component, keeping it's state... it's a wonderful developer experience.&lt;br&gt;
+In CRA the webpack configuration is normally unreachable, so we'll use some great package (&lt;a href="https://github.com/timarney/react-app-rewired"&gt;react-app-rewired&lt;/a&gt; and &lt;a href="https://github.com/cdharris/react-app-rewire-hot-loader"&gt;react-app-rewire-hot-loader&lt;/a&gt;) to allow our changes, here's a quick step-by-step guide on how to do it without going into much details:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;yarn add -D react-app-rewired react-hot-loader react-app-rewire-hot-loader&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a &lt;code&gt;config-overrides.js&lt;/code&gt; file on your project root with this content:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-javascript"&gt;const rewireReactHotLoader = require('react-app-rewire-hot-loader')
+
+/* config-overrides.js */
+module.exports = function override(config, env) {
+  config = rewireReactHotLoader(config, env)
+  return config
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Change your &lt;code&gt;react-scripts&lt;/code&gt; to &lt;code&gt;react-app-rewired&lt;/code&gt; in your &lt;code&gt;package.json&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;start&amp;quot;: &amp;quot;react-app-rewired start&amp;quot;,
+&amp;quot;build&amp;quot;: &amp;quot;react-app-rewired build&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Wrap your app in the hot HOC:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// Hot-loader
+import {hot} from 'react-hot-loader'
+
+...
+export default hot(module)(App)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That's it!&lt;br&gt;
+Rerun your dev-server with &lt;code&gt;yarn start&lt;/code&gt; and your proper hot reload should be working.&lt;/p&gt;
+&lt;/div&gt;</content:encoded></item><item><title>React - host in GitHub</title><description>How to deploy your create-react-apps in GitHub Pages in few easy steps.</description><link>https://dariosky.github.io/2017/10/21/react-host-in-github/</link><guid isPermaLink="false">59eb0ab721cf8a39f983b9ba</guid><category>github</category><category>react</category><category>deploy</category><dc:creator>Dario Varotto</dc:creator><pubDate>Sat, 21 Oct 2017 09:08:01 GMT</pubDate><media:content url="https://dariosky.github.io/content/images/2017/10/react-github.png" medium="image"/><content:encoded>&lt;div class="kg-card-markdown"&gt;&lt;img src="https://dariosky.github.io/content/images/2017/10/react-github.png" alt="React - host in GitHub"&gt;&lt;p&gt;In these months I'm playing with React, Redux and ES6.&lt;br&gt;
+I fell in love with the Meteor ecosystem some year ago, and one of the things I appreciated a lot, was the ability to easily deploy the project online.&lt;/p&gt;
+&lt;p&gt;I was happy to find a way to deploy the project in a similar way with React application created with &lt;code&gt;create-react-app&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Here's how:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Add an &lt;code&gt;homepage&lt;/code&gt; field in your &lt;code&gt;package.json&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &amp;quot;homepage&amp;quot;: &amp;quot;https://myusername.github.io/my-app&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install gh-pages&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yarn add gh-page
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add the &lt;code&gt;deploy&lt;/code&gt; to your command, in &lt;code&gt;package.json&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  &amp;quot;scripts&amp;quot;: {
+     &amp;quot;predeploy&amp;quot;: &amp;quot;npm run build&amp;quot;,
+     &amp;quot;deploy&amp;quot;: &amp;quot;gh-pages -d build&amp;quot;,
+     ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Deploy:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; yarn deploy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;PS. Be sure to have the GitHub Pages are enabled in your&lt;br&gt;
+GitHub settings&lt;/p&gt;
+&lt;p&gt;References:&lt;br&gt;
+&lt;a href="https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages"&gt;create-react-app in GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</content:encoded></item></channel></rss></html>
